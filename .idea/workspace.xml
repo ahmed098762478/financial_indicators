@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e16dfe08-d70e-4200-b9a9-3122c674828e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/financial_indicators_cmr.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/DTO/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/entitys/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/security/JwtTokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/util/DateUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +26,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 6
@@ -32,21 +46,41 @@
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "corretto-17",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/PC/Desktop/CMR/financial_indicators_cmr/transparisation_module/src/main/java/com/gov/cmr/transparisation_module",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\CMR\financial_indicators_cmr\transparisation_module\src\main\java\com\gov\cmr\transparisation_module" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI Server (cli)">
+    <configuration name="Angular Application (cli)" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
     <configuration name="TransparisationModuleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="transparisation_module" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.gov.cmr.transparisation_module.TransparisationModuleApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="Angular CLI Server (cli)" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/cli/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -57,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741786400972</updated>
-      <workItem from="1741786402006" duration="306000" />
+      <workItem from="1741786402006" duration="1014000" />
     </task>
     <servers />
   </component>
