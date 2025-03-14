@@ -6,6 +6,7 @@ import com.gov.cmr.transparisation_module.model.entitys.User;
 import com.gov.cmr.transparisation_module.repository.UserRepository;
 import com.gov.cmr.transparisation_module.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -17,17 +18,21 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDTO createUser(UserDTO userDTO) {
-        // Map DTO to entity using Lombok's builder
         User user = mapToEntity(userDTO);
-        // Override createdAt with current time using toBuilder()
-        user = user.toBuilder().createdAt(LocalDateTime.now()).build();
+
+        // Encode the raw password before saving:
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+
+        // ... set createdAt, save user, return mapped DTO
+        // user = user.toBuilder().createdAt(LocalDateTime.now()).build();
         User savedUser = userRepository.save(user);
         return mapToDTO(savedUser);
     }
-
     @Override
     public UserDTO getUserById(Long id) {
         User user = userRepository.findById(id)
@@ -43,7 +48,6 @@ public class UserServiceImpl implements UserService {
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
-
     @Override
     public UserDTO updateUser(Long id, UserDTO userDTO) {
         User existingUser = userRepository.findById(id)
