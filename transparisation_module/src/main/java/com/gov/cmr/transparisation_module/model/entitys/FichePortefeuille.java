@@ -3,7 +3,6 @@ package com.gov.cmr.transparisation_module.model.entitys;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -14,69 +13,52 @@ import java.util.Date;
 @Builder
 public class FichePortefeuille {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer ID_Fiche_Portefeuille;
+    private Integer idFichePortefeuille;
 
-    private Integer actif;
-
+    private Integer code;
+    private String act;
     private String classe;
-
-    private String code;
-
-    private Float convexite;
-
-    @Temporal(TemporalType.DATE)
-    private Date date;
-
-    @Temporal(TemporalType.DATE)
-    private Date date_Reference;
-
-    private String depositaire;
-
+    private String devise;
     private String description;
 
-    private String devise;
+    @Column(name = "code_1")  // Because there's another "code" column
+    private Integer code1;
 
-    private Float duration;
+    @Column(precision = 38, scale = 2)
+    private BigDecimal pdrTotalNet;
 
-    private Float emprunt;
+    @Column(precision = 38, scale = 2)
+    private BigDecimal totalValo;
 
-    private String fpt;
+    @Temporal(TemporalType.DATE)
+    private Date dateReference;
 
-    private BigDecimal PDR_Total_NET;
-
-    private Float PDR_Unit_NET;
-
-    private BigDecimal PMV_Nette;
-
-    private Float pourc_Classe_Actif;
-
-    private Float pourc_emet_actif_net;
-
-    private Float pourc_emet_total_titre;
-
-    private Float pourc_Total_Titre;
-
+    private Integer actif;
     private Float pret;
+    private Float emprunt;
+    private Float pdrUnitNet;
+    private Float valoUnitaire;
 
+    @Column(precision = 38, scale = 2)
+    private BigDecimal pmvNette;
+
+    private Float tauxDeChange;
+    private Float valoUnitCV;
+
+    @Column(precision = 38, scale = 2)
+    private BigDecimal valoTotalCV;
+
+    private Float pourcTotalTitre;
+    private String depositaire;
+    private Float pourcClasseActif;
+    private Float pourcEmetTotalTitre;
+    private Float pourcEmetActifNet;
+    private Float valoN1;
+    private Float variationValo;
+    private Float tauxCourbe;
     private Float sensibilite;
-
-    private Float taux_Courbe;
-
-    private Integer taux_de_change;
-
-    private BigDecimal total_Valo;
-
-    private Integer valo_N_1;
-
-    private BigDecimal valo_Total_CV;
-
-    private Float valo_Unit_CV;
-
-    private Float valo_Unitaire;
-
-    private Integer variation_Valo;
+    private Float duration;
+    private Float convexite;
 }

@@ -1,0 +1,15 @@
+<div class="upload-container">
+  <h2>Import Excel File</h2>
+
+  <input type="file" (change)="onFileSelected($event)" accept=".xlsx, .xls" />
+
+  <button (click)="onUpload()" [disabled]="!selectedFile">Upload</button>
+
+  <div *ngIf="uploadProgress > 0">
+    <p>Upload Progress: {{ uploadProgress }}%</p>
+  </div>
+
+  <div *ngIf="uploadMessage">
+    <p>{{ uploadMessage }}</p>
+  </div>
+</div>
