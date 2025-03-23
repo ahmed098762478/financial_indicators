@@ -1,7 +1,6 @@
 package com.gov.cmr.transparisation_module.service;
 
 import com.gov.cmr.transparisation_module.model.DTO.UserDTO;
-
 import java.util.List;
 
 public interface UserService {
