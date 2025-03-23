@@ -8,12 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gov.cmr.transparisation_module.model.DTO.FichePortefeuilleSummary;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api/fiche-portefeuille")  // Ensure consistency with Angular's endpoint
+@RequestMapping("/api/fiche-portefeuille")
 @RequiredArgsConstructor
 @Slf4j // Enables logging
 public class FichePortefeuilleController {
@@ -45,8 +48,22 @@ public class FichePortefeuilleController {
                     .body("Error processing file: " + e.getMessage());
         } finally {
             if (tempFile != null && tempFile.exists()) {
-                tempFile.deleteOnExit(); // Ensures cleanup
+                tempFile.deleteOnExit();
             }
         }
     }
+
+
+
+
+
+    @GetMapping("/summary")
+    public List<FichePortefeuilleSummary> getFichePortefeuilleSummary() {
+        return fichePortefeuilleService.getFichePortefeuilleSummary();
+    }
+
+
+
+
+
 }

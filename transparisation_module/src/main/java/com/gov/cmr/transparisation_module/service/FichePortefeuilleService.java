@@ -1,5 +1,6 @@
 package com.gov.cmr.transparisation_module.service;
 
+import com.gov.cmr.transparisation_module.model.DTO.FichePortefeuilleSummary;
 import com.gov.cmr.transparisation_module.model.entitys.FichePortefeuille;
 import com.gov.cmr.transparisation_module.repository.FichePortefeuilleRepository;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -163,4 +165,16 @@ public class FichePortefeuilleService {
         }
         return null;
     }
+
+
+
+
+    public List<FichePortefeuilleSummary> getFichePortefeuilleSummary() {
+        return fichePortefeuilleRepository.findFichePortefeuilleSummary();
+    }
+
+
+
+
+
 }
