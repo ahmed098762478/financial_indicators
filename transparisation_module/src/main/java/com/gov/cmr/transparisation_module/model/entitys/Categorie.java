@@ -28,7 +28,4 @@ public class Categorie {
     private String classe;
 
 
-    @OneToMany(mappedBy="categorieBean")
-    private List<ReferentielTitre> referentielTitres;
-
 }

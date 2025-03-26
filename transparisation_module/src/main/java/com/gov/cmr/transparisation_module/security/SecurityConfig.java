@@ -19,7 +19,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // We only inject the services we need here:
     private final CustomUserDetailsService customUserDetailsService;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtTokenProvider jwtTokenProvider;
@@ -34,46 +33,54 @@ public class SecurityConfig {
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
-    // 1) Expose JwtAuthenticationFilter as a Bean
+    // 1) JwtAuthenticationFilter as a Bean
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() {
         return new JwtAuthenticationFilter(jwtTokenProvider, customUserDetailsService);
     }
 
-    // 2) Define the security filter chain
+    // 2) Security filter chain
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                // Disable CSRF (not needed for token-based auth)
+                // Disable CSRF (token-based auth)
                 .csrf(csrf -> csrf.disable())
 
-                // Use your custom entry point for unauthorized requests
+                // Custom entry point for unauthorized
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
 
-                // Make sessions stateless
+                // Stateless session
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-                // Authorization
                 .authorizeHttpRequests(auth -> auth
-                        // Permit login endpoints
+                        // Let preflight requests in
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+                        // Let /api/auth/** be open
                         .requestMatchers("/api/auth/**").permitAll()
 
-                        // Permit user signup (POST /api/users)
+                        .requestMatchers("/api/categories/**").permitAll()
+                        .requestMatchers("/api/referentiel-titres/**").permitAll()
+                        .requestMatchers("/api/transparisation/**").permitAll()
+                        // Let POST /api/users be open if you do sign-up
                         .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
 
-                        // Any other /api/users/** requires auth
-                        .requestMatchers("/api/users/**").authenticated()
+                        // **Add** a rule for /api/fiche-portefeuille/upload
+                        .requestMatchers(HttpMethod.POST, "/api/fiche-portefeuille/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/fiche-portefeuille/**").permitAll()
 
-                        // All other routes also require auth
+                        // Restrict everything else
                         .anyRequest().authenticated()
                 )
-                // Finally, add our JWT filter
+
+
+                // Add JWT filter
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
-    // 3) Define our authentication provider with our customUserDetailsService + BCrypt
+    // 3) DaoAuthenticationProvider
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -82,14 +89,14 @@ public class SecurityConfig {
         return provider;
     }
 
-    // 4) Expose the AuthenticationManager for login
+    // 4) AuthenticationManager for login
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig)
             throws Exception {
         return authConfig.getAuthenticationManager();
     }
 
-    // 5) Use BCrypt for password hashing
+    // 5) BCrypt for password hashing
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

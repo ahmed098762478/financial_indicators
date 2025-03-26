@@ -167,7 +167,7 @@ public class FichePortefeuilleService {
     }
 
 
-
+        // somme
 
     public List<FichePortefeuilleSummary> getFichePortefeuilleSummary() {
         return fichePortefeuilleRepository.findFichePortefeuilleSummary();

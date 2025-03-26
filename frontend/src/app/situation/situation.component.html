@@ -1,0 +1,29 @@
+<div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+  <div class="overflow-x-auto">
+    <table class="min-w-full text-sm text-left text-gray-700 dark:text-gray-300">
+      <thead class="bg-gray-200 dark:bg-gray-800 text-xs text-gray-700 dark:text-gray-400 uppercase">
+      <tr>
+        <th class="px-6 py-4 rounded-tl-lg">Act</th>
+        <th class="px-6 py-4">Valeur Comptable (VC)</th>
+        <th class="px-6 py-4 rounded-tr-lg">Valeur Marché (VM)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let item of fichePortefeuilleSummary"
+        class="border-b border-gray-200 dark:border-gray-700 even:bg-gray-50 dark:even:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+      >
+        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+          {{ item.act || '—' }}
+        </td>
+        <td class="px-6 py-4">
+          {{ item.valeurComptable | number: '1.2-2' }}
+        </td>
+        <td class="px-6 py-4">
+          {{ item.valeurMarche | number: '1.2-2' }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
