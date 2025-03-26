@@ -32,7 +32,7 @@ public class ReferentielTitre {
 
     @Column(name = "titre_pere")
     private String titrePere;
-
+    // add to fp
     @Column(name = "classe")
     private String classe;
 
@@ -41,7 +41,7 @@ public class ReferentielTitre {
 
     @Column(name = "emetteur")
     private String emetteur;
-
+    // here
     @Column(name = "forme_detention")
     private String formeDetention;
 

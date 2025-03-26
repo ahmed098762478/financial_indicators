@@ -4,12 +4,12 @@ import com.gov.cmr.transparisation_module.model.DTO.ReferentielTitreDTO;
 import com.gov.cmr.transparisation_module.model.entitys.ReferentielTitre;
 import com.gov.cmr.transparisation_module.repository.ReferentielTitreRepository;
 import com.gov.cmr.transparisation_module.service.ReferentielTitreService;
+import com.gov.cmr.transparisation_module.service.impl.logics.SituationLogic;
 import jakarta.transaction.Transactional;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -25,9 +25,11 @@ import java.util.Optional;
 public class ReferentielTitreServiceImpl implements ReferentielTitreService {
 
     private final ReferentielTitreRepository repository;
+    private final SituationLogic situationLogic;
 
-    public ReferentielTitreServiceImpl(ReferentielTitreRepository repository) {
+    public ReferentielTitreServiceImpl(ReferentielTitreRepository repository, SituationLogic situationLogic) {
         this.repository = repository;
+        this.situationLogic = situationLogic;
     }
 
     @Override
@@ -120,12 +122,10 @@ public class ReferentielTitreServiceImpl implements ReferentielTitreService {
             int lastRowNum = sheet.getLastRowNum(); // get last row index (0-based)
             List<ReferentielTitre> entities = new ArrayList<>();
 
-            // Start at 1 assuming row 0 is header
+            // Start at row 1 assuming row 0 is header
             for (int i = 1; i <= lastRowNum; i++) {
                 Row row = sheet.getRow(i);
-                if (row == null) {
-                    continue; // skip empty rows
-                }
+                if (row == null) continue;
 
                 ReferentielTitre entity = new ReferentielTitre();
 
@@ -192,10 +192,10 @@ public class ReferentielTitreServiceImpl implements ReferentielTitreService {
 
                 entities.add(entity);
             }
-
-            // Optionally, if you're dealing with a very large number of rows,
-            // you could flush in batches (e.g., every 500 rows)
+            // Save all ReferentielTitre records
             repository.saveAll(entities);
+            // After finishing the upload, update Fiche_Portefeuille from referentiel_titre.
+            situationLogic.updateFichePortefeuilleFromReferentielTitre();
         } catch (Exception e) {
             throw new RuntimeException("Failed to import Excel data: " + e.getMessage());
         }
@@ -212,11 +212,9 @@ public class ReferentielTitreServiceImpl implements ReferentielTitreService {
                     return cell.getLocalDateTimeCellValue().toLocalDate().toString();
                 } else {
                     double numericValue = cell.getNumericCellValue();
-                    if(numericValue == (long) numericValue) {
-                        return String.valueOf((long) numericValue);
-                    } else {
-                        return String.valueOf(numericValue);
-                    }
+                    return (numericValue == (long) numericValue)
+                            ? String.valueOf((long) numericValue)
+                            : String.valueOf(numericValue);
                 }
             case BOOLEAN:
                 return String.valueOf(cell.getBooleanCellValue());
@@ -227,7 +225,6 @@ public class ReferentielTitreServiceImpl implements ReferentielTitreService {
                 return "";
         }
     }
-
 
     // Helper: parse date cell to LocalDate
     private LocalDate parseDateCell(Cell cell) {
@@ -340,8 +337,4 @@ public class ReferentielTitreServiceImpl implements ReferentielTitreService {
                 .deviseCotation(dto.getDeviseCotation())
                 .build();
     }
-
-
-
-
 }

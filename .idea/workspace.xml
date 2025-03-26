@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e16dfe08-d70e-4200-b9a9-3122c674828e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/DTO/SituationAvantTraitementDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/entitys/SituationAvantTraitement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/repository/SituationAvantTraitementRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/SituationAvantTraitementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/SituationAvantTraitementServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/logics/SituationLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/entitys/FichePortefeuille.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/entitys/FichePortefeuille.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/entitys/ReferentielTitre.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/entitys/ReferentielTitre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/FichePortefeuilleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/FichePortefeuilleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/ReferentielTitreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/ReferentielTitreServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +141,7 @@
       <workItem from="1742346608828" duration="1911000" />
       <workItem from="1742693677944" duration="18328000" />
       <workItem from="1742868085856" duration="8744000" />
-      <workItem from="1742958404677" duration="6835000" />
+      <workItem from="1742958404677" duration="13022000" />
     </task>
     <servers />
   </component>

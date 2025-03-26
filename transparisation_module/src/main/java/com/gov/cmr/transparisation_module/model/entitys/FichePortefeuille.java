@@ -61,4 +61,10 @@ public class FichePortefeuille {
     private Float sensibilite;
     private Float duration;
     private Float convexite;
+    // addition
+    private String classe_titre;
+    private String categorie_titre;
+    private String emetteur ;
+    // ptf
+    private String PTF;
 }

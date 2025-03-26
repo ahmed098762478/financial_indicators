@@ -3,6 +3,7 @@ package com.gov.cmr.transparisation_module.service;
 import com.gov.cmr.transparisation_module.model.DTO.FichePortefeuilleSummary;
 import com.gov.cmr.transparisation_module.model.entitys.FichePortefeuille;
 import com.gov.cmr.transparisation_module.repository.FichePortefeuilleRepository;
+import com.gov.cmr.transparisation_module.service.impl.logics.SituationLogic;
 import lombok.AllArgsConstructor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -21,7 +22,7 @@ import java.util.List;
 public class FichePortefeuilleService {
 
     private final FichePortefeuilleRepository fichePortefeuilleRepository;
-
+    private final SituationLogic situationLogic;
     /**
      * Reads an Excel file and inserts rows into the FichePortefeuille table.
      * @param filePath Absolute path to the Excel file (e.g., "C:\\Users\\PC\\Desktop\\CMR\\fp.xlsx")
@@ -81,6 +82,7 @@ public class FichePortefeuilleService {
                 fichePortefeuilleRepository.save(fp);
             }
         }
+        situationLogic.insertSituationAvantTraitement();
     }
 
     // Returns the trimmed string value of a cell or null if the cell is empty.
