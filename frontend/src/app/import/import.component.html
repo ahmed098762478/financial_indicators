@@ -81,7 +81,7 @@
   </div>
 
   <!-- Section 4: Transparisation Upload -->
-  <div class="flex flex-wrap items-center gap-3 bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow">
+  <div class="flex flex-wrap items-center gap-3 bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
     <h2 class="text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">
       Import Transparisation Excel File
     </h2>
@@ -103,7 +103,34 @@
       {{ uploadTransparisationMessage }}
     </span>
   </div>
-  <div *ngIf="uploadTransparisationProgress > 0" class="mt-3">
+  <div *ngIf="uploadTransparisationProgress > 0" class="mb-6">
     <p class="text-sm text-gray-700 dark:text-gray-300">Progress: {{ uploadTransparisationProgress }}%</p>
+  </div>
+
+  <!-- Section 5: Op Upload -->
+  <div class="flex flex-wrap items-center gap-3 bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow">
+    <h2 class="text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">
+      Import Op Excel File
+    </h2>
+    <input
+      id="op_file_input"
+      type="file"
+      (change)="onOpFileSelected($event)"
+      class="text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer
+             bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700
+             dark:border-gray-600 dark:placeholder-gray-400"
+    />
+    <button
+      (click)="onUploadOp()"
+      class="text-sm text-white bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-lg transition-colors"
+    >
+      Op
+    </button>
+    <span *ngIf="uploadOpMessage" class="text-sm" [ngClass]="uploadOpMessage.includes('Error') ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'">
+      {{ uploadOpMessage }}
+    </span>
+  </div>
+  <div *ngIf="uploadOpProgress > 0" class="mb-6">
+    <p class="text-sm text-gray-700 dark:text-gray-300">Progress: {{ uploadOpProgress }}%</p>
   </div>
 </div>
