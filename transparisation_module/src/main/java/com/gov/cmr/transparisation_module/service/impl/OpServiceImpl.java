@@ -4,12 +4,13 @@ import com.gov.cmr.transparisation_module.model.DTO.OpDTO;
 import com.gov.cmr.transparisation_module.model.entitys.Op;
 import com.gov.cmr.transparisation_module.repository.OpRepository;
 import com.gov.cmr.transparisation_module.service.OpService;
+import com.gov.cmr.transparisation_module.service.impl.logics.SituationLogic;
 import jakarta.transaction.Transactional;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
+import com.gov.cmr.transparisation_module.service.impl.logics.SituationLogic;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -24,9 +25,11 @@ import java.util.Optional;
 public class OpServiceImpl implements OpService {
 
     private final OpRepository repository;
+    private final SituationLogic situationLogic;
 
-    public OpServiceImpl(OpRepository repository) {
+    public OpServiceImpl(OpRepository repository, SituationLogic situationLogic) {
         this.repository = repository;
+        this.situationLogic = situationLogic;
     }
 
     @Override
@@ -123,6 +126,8 @@ public class OpServiceImpl implements OpService {
                 entities.add(entity);
             }
             repository.saveAll(entities);
+
+            situationLogic.insertSituationAvantTraitementFromOp();
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Failed to import Excel data: " + e.getMessage());

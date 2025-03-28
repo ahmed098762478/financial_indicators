@@ -1,0 +1,310 @@
+<div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+
+  <!-- Optional search/filter area -->
+  <div class="mt-4 flex flex-col md:flex-row items-center gap-4 mb-6">
+    <input type="text" placeholder="Insérer PTF" class="p-2 border rounded w-full md:w-1/3" />
+    <input type="date" class="p-2 border rounded w-full md:w-1/3" />
+    <button class="p-2 bg-blue-600 text-white rounded">Filtrer</button>
+  </div>
+
+  <!-- Only render the table if aggregator data is available -->
+  <div class="overflow-x-auto" *ngIf="aggregator">
+    <table
+      class="min-w-full text-sm text-left text-gray-700 dark:text-gray-300
+             border-collapse border border-gray-300 dark:border-gray-700">
+      <thead class="bg-gray-200 dark:bg-gray-800 text-xs text-gray-700 dark:text-gray-400 uppercase">
+      <tr>
+        <th class="px-6 py-4 border" rowspan="2">Classe</th>
+        <th class="px-6 py-4 border" rowspan="2">Act</th>
+        <th class="px-6 py-4 border text-lg font-semibold text-center" colspan="2">
+          Situation avant retraitement
+        </th>
+        <th class="px-6 py-4 border text-lg font-semibold text-center" colspan="2">
+          Situation après retraitement
+        </th>
+      </tr>
+      <tr>
+        <th class="px-6 py-4 border">Valeur Comptable (VC)</th>
+        <th class="px-6 py-4 border">Valeur Marché (VM)</th>
+        <th class="px-6 py-4 border">Valeur Comptable (VC)</th>
+        <th class="px-6 py-4 border">Valeur Marché (VM)</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <!-- ====================== Classe I ====================== -->
+      <tr class="bg-gray-300 dark:bg-gray-700 font-bold">
+        <td class="px-6 py-4 border" colspan="6">Classe I</td>
+      </tr>
+
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">Bons émis par Adjudication</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.bdtVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.bdtVM }}</td>
+        <!-- Après retraitement => show 0 or blank -->
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">Valeurs Jouissants de la Garantie de l'Etat</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.vjgVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.vjgVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OPCI-Etat</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.opciEtatVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.opciEtatVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OPCVM Obligataires Purs</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.omltPursVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.omltPursVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">opération encours</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.operationEncoursVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.operationEncoursVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OMLT _PB</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.omltPbVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.omltPbVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+
+      <!-- Total & Ratio I -->
+      <tr class="bg-orange-200 dark:bg-orange-700 font-bold text-red-700 dark:text-red-400">
+        <td class="px-6 py-4 border" colspan="2">Total</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.totalClassIVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.totalClassIVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr class="bg-red-500 text-white font-bold">
+        <td class="px-6 py-4 border" colspan="2">Ratio I</td>
+        <td class="px-6 py-4 border">{{ aggregator.classI.ratioI }}</td>
+        <td class="px-6 py-4 border">—</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+
+      <!-- ====================== Classe II ====================== -->
+      <tr class="bg-gray-300 dark:bg-gray-700 font-bold">
+        <td class="px-6 py-4 border" colspan="6">Classe II</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">CD</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.cdVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.cdVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OC</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.ocVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.ocVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">ONC</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.oncVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.oncVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">Monétaire</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.monetaireVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.monetaireVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OMLT</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.omltVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.omltVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OMLT _PR</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.omltPrVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.omltPrVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OMLT Déd.</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.omltDedVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.omltDedVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+
+      <!-- Total & Ratio II -->
+      <tr class="bg-orange-200 dark:bg-orange-700 font-bold text-red-700 dark:text-red-400">
+        <td class="px-6 py-4 border" colspan="2">Total</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.totalClassIIVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.totalClassIIVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr class="bg-red-500 text-white font-bold">
+        <td class="px-6 py-4 border" colspan="2">Ratio II</td>
+        <td class="px-6 py-4 border">{{ aggregator.classII.ratioII }}</td>
+        <td class="px-6 py-4 border">—</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+
+      <!-- ====================== Classe III ====================== -->
+      <tr class="bg-gray-300 dark:bg-gray-700 font-bold">
+        <td class="px-6 py-4 border" colspan="6">Classe III</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">ACT</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.actVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.actVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OPCVM Actions & Diversifiés</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.opcvmActDivVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.opcvmActDivVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">FPCT</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.fpctVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.fpctVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">Actions Déd.</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.actionsDedVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.actionsDedVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OMLT _act</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.omltActVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.omltActVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">Fonds capital risque</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.fondsCapRisqueVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.fondsCapRisqueVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+
+      <!-- Total & Ratio III -->
+      <tr class="bg-orange-200 dark:bg-orange-700 font-bold text-red-700 dark:text-red-400">
+        <td class="px-6 py-4 border" colspan="2">Total</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.totalClassIIIVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.totalClassIIIVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr class="bg-red-500 text-white font-bold">
+        <td class="px-6 py-4 border" colspan="2">Ratio III</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIII.ratioIII }}</td>
+        <td class="px-6 py-4 border">—</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+
+      <!-- ====================== Classe IV ====================== -->
+      <tr class="bg-gray-300 dark:bg-gray-700 font-bold">
+        <td class="px-6 py-4 border" colspan="6">Classe IV</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OPCI privé</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIV.opciPriveVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIV.opciPriveVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">OPCI PB_TR</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIV.opciPbTrVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIV.opciPbTrVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 border"></td>
+        <td class="px-6 py-4 border">Fonds d'investissement</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIV.fondsInvVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIV.fondsInvVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+
+      <!-- Total & Ratio IV -->
+      <tr class="bg-orange-200 dark:bg-orange-700 font-bold text-red-700 dark:text-red-400">
+        <td class="px-6 py-4 border" colspan="2">Total</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIV.totalClassIVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIV.totalClassIVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+      <tr class="bg-red-500 text-white font-bold">
+        <td class="px-6 py-4 border" colspan="2">Ratio IV</td>
+        <td class="px-6 py-4 border">{{ aggregator.classIV.ratioIV }}</td>
+        <td class="px-6 py-4 border">—</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+
+      <!-- ====================== Grand Total ====================== -->
+      <tr class="bg-gray-300 dark:bg-gray-700 font-bold">
+        <td class="px-6 py-4 border" colspan="2">Total Portefeuille</td>
+        <td class="px-6 py-4 border">{{ aggregator.grandTotalVC }}</td>
+        <td class="px-6 py-4 border">{{ aggregator.grandTotalVM }}</td>
+        <td class="px-6 py-4 border">0</td>
+        <td class="px-6 py-4 border">0</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

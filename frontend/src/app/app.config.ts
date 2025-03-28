@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import {HomeComponent} from "./home/home.component";
 import {ImportComponentComponent} from "./import/import.component";
 import {SituationComponent} from "./situation/situation.component";
+import {TableAvantApresComponent} from "./table-avant-apres/table-avant-apres.component";
 // If you create a HomeComponent or other pages, import them similarly.
 
 const routes: Routes = [
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'fp-file', component: ImportComponentComponent },
-  { path: 'situation', component: SituationComponent },
+  { path: 'situation', component: TableAvantApresComponent },
 
 ];
 

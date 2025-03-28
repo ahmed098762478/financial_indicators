@@ -58,6 +58,7 @@ public class SecurityConfig {
 
                         // Let /api/auth/** be open
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/situation-avant-traitement/**").permitAll()
 
                         .requestMatchers("/api/categories/**").permitAll()
                         .requestMatchers("/api/referentiel-titres/**").permitAll()

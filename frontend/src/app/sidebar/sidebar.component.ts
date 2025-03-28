@@ -29,20 +29,6 @@ export class SidebarComponent {
   // The array of SECTIONS, each with subsections
   sections: SidebarSection[] = [
     /* 1) "Data" section */
-    {
-      label: 'Data',
-      icon: 'fa-solid fa-database',
-      items: [
-        { label: 'CMR', icon: 'fa-solid fa-house', route: '/index' },
-        { label: 'Excel', icon: 'fa-solid fa-file-excel', route: '/excel' },
-        { label: 'Base Maroclear', icon: 'fa-solid fa-database', route: '/basemaroclear' },
-        { label: 'Bourse de Casa', icon: 'fa-solid fa-chart-line', route: '/boursecasa' },
-        { label: 'Emetteur', icon: 'fa-solid fa-bullhorn', route: '/emetteur' },
-        { label: 'Te', icon: 'fa-solid fa-book', route: '/te' },
-        { label: 'Cash Management', icon: 'fa-solid fa-money-bill-wave', route: '/cashmanagment' }
-      ],
-      expanded: true
-    },
 
     /* 2) NEW "Data Importation of FP File" section */
     {
