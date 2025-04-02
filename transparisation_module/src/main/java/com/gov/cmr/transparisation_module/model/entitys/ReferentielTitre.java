@@ -13,6 +13,341 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 public class ReferentielTitre {
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setCodeIsin(String codeIsin) {
+        this.codeIsin = codeIsin;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLibCourt(String libCourt) {
+        this.libCourt = libCourt;
+    }
+
+    public void setFlagActif(String flagActif) {
+        this.flagActif = flagActif;
+    }
+
+    public void setTitrePere(String titrePere) {
+        this.titrePere = titrePere;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    public void setEmetteur(String emetteur) {
+        this.emetteur = emetteur;
+    }
+
+    public void setFormeDetention(String formeDetention) {
+        this.formeDetention = formeDetention;
+    }
+
+    public void setSecteurEconomique(String secteurEconomique) {
+        this.secteurEconomique = secteurEconomique;
+    }
+
+    public void setNombreTitreEmis(Long nombreTitreEmis) {
+        this.nombreTitreEmis = nombreTitreEmis;
+    }
+
+    public void setNominal(BigDecimal nominal) {
+        this.nominal = nominal;
+    }
+
+    public void setTypeSpreadEmission(String typeSpreadEmission) {
+        this.typeSpreadEmission = typeSpreadEmission;
+    }
+
+    public void setSpreadEmission(BigDecimal spreadEmission) {
+        this.spreadEmission = spreadEmission;
+    }
+
+    public void setPrixEmission(BigDecimal prixEmission) {
+        this.prixEmission = prixEmission;
+    }
+
+    public void setPrimeRembou(BigDecimal primeRembou) {
+        this.primeRembou = primeRembou;
+    }
+
+    public void setQuotite(BigDecimal quotite) {
+        this.quotite = quotite;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
+    }
+
+    public void setTypeTaux(String typeTaux) {
+        this.typeTaux = typeTaux;
+    }
+
+    public void setValeurTaux(BigDecimal valeurTaux) {
+        this.valeurTaux = valeurTaux;
+    }
+
+    public void setMethodeCoupon(String methodeCoupon) {
+        this.methodeCoupon = methodeCoupon;
+    }
+
+    public void setPeriodiciteCoupon(String periodiciteCoupon) {
+        this.periodiciteCoupon = periodiciteCoupon;
+    }
+
+    public void setPeriodiciteRembou(String periodiciteRembou) {
+        this.periodiciteRembou = periodiciteRembou;
+    }
+
+    public void setBaseCalcul(String baseCalcul) {
+        this.baseCalcul = baseCalcul;
+    }
+
+    public void setTypePrecision(String typePrecision) {
+        this.typePrecision = typePrecision;
+    }
+
+    public void setDateEmission(LocalDate dateEmission) {
+        this.dateEmission = dateEmission;
+    }
+
+    public void setDateJouissance(LocalDate dateJouissance) {
+        this.dateJouissance = dateJouissance;
+    }
+
+    public void setDateEcheance(LocalDate dateEcheance) {
+        this.dateEcheance = dateEcheance;
+    }
+
+    public void setDateMaj(LocalDate dateMaj) {
+        this.dateMaj = dateMaj;
+    }
+
+    public void setGarantie(String garantie) {
+        this.garantie = garantie;
+    }
+
+    public void setTiersGarant(String tiersGarant) {
+        this.tiersGarant = tiersGarant;
+    }
+
+    public void setCourbeTaux(String courbeTaux) {
+        this.courbeTaux = courbeTaux;
+    }
+
+    public void setMethodeValo(String methodeValo) {
+        this.methodeValo = methodeValo;
+    }
+
+    public void setTypeCotation(String typeCotation) {
+        this.typeCotation = typeCotation;
+    }
+
+    public void setPlaceCotation(String placeCotation) {
+        this.placeCotation = placeCotation;
+    }
+
+    public void setMarche(String marche) {
+        this.marche = marche;
+    }
+
+    public void setGroupe1(String groupe1) {
+        this.groupe1 = groupe1;
+    }
+
+    public void setGroupe2(String groupe2) {
+        this.groupe2 = groupe2;
+    }
+
+    public void setGroupe3(String groupe3) {
+        this.groupe3 = groupe3;
+    }
+
+    public void setDepositaire(String depositaire) {
+        this.depositaire = depositaire;
+    }
+
+    public void setDeviseCotation(String deviseCotation) {
+        this.deviseCotation = deviseCotation;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getCodeIsin() {
+        return codeIsin;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLibCourt() {
+        return libCourt;
+    }
+
+    public String getFlagActif() {
+        return flagActif;
+    }
+
+    public String getTitrePere() {
+        return titrePere;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public String getEmetteur() {
+        return emetteur;
+    }
+
+    public String getFormeDetention() {
+        return formeDetention;
+    }
+
+    public String getSecteurEconomique() {
+        return secteurEconomique;
+    }
+
+    public Long getNombreTitreEmis() {
+        return nombreTitreEmis;
+    }
+
+    public BigDecimal getNominal() {
+        return nominal;
+    }
+
+    public String getTypeSpreadEmission() {
+        return typeSpreadEmission;
+    }
+
+    public BigDecimal getSpreadEmission() {
+        return spreadEmission;
+    }
+
+    public BigDecimal getPrixEmission() {
+        return prixEmission;
+    }
+
+    public BigDecimal getPrimeRembou() {
+        return primeRembou;
+    }
+
+    public BigDecimal getQuotite() {
+        return quotite;
+    }
+
+    public String getDivision() {
+        return division;
+    }
+
+    public String getTypeTaux() {
+        return typeTaux;
+    }
+
+    public BigDecimal getValeurTaux() {
+        return valeurTaux;
+    }
+
+    public String getMethodeCoupon() {
+        return methodeCoupon;
+    }
+
+    public String getPeriodiciteCoupon() {
+        return periodiciteCoupon;
+    }
+
+    public String getPeriodiciteRembou() {
+        return periodiciteRembou;
+    }
+
+    public String getBaseCalcul() {
+        return baseCalcul;
+    }
+
+    public String getTypePrecision() {
+        return typePrecision;
+    }
+
+    public LocalDate getDateEmission() {
+        return dateEmission;
+    }
+
+    public LocalDate getDateJouissance() {
+        return dateJouissance;
+    }
+
+    public LocalDate getDateEcheance() {
+        return dateEcheance;
+    }
+
+    public LocalDate getDateMaj() {
+        return dateMaj;
+    }
+
+    public String getGarantie() {
+        return garantie;
+    }
+
+    public String getTiersGarant() {
+        return tiersGarant;
+    }
+
+    public String getCourbeTaux() {
+        return courbeTaux;
+    }
+
+    public String getMethodeValo() {
+        return methodeValo;
+    }
+
+    public String getTypeCotation() {
+        return typeCotation;
+    }
+
+    public String getPlaceCotation() {
+        return placeCotation;
+    }
+
+    public String getMarche() {
+        return marche;
+    }
+
+    public String getGroupe1() {
+        return groupe1;
+    }
+
+    public String getGroupe2() {
+        return groupe2;
+    }
+
+    public String getGroupe3() {
+        return groupe3;
+    }
+
+    public String getDepositaire() {
+        return depositaire;
+    }
+
+    public String getDeviseCotation() {
+        return deviseCotation;
+    }
 
     @Id
     @Column(name = "code")

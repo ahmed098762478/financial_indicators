@@ -6,6 +6,8 @@ import {HomeComponent} from "./home/home.component";
 import {ImportComponentComponent} from "./import/import.component";
 import {SituationComponent} from "./situation/situation.component";
 import {TableAvantApresComponent} from "./table-avant-apres/table-avant-apres.component";
+import { provideAnimations } from '@angular/platform-browser/animations';
+
 // If you create a HomeComponent or other pages, import them similarly.
 
 const routes: Routes = [

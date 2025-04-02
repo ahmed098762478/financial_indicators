@@ -11,6 +11,175 @@ import java.time.LocalDate;
 @Builder
 public class ReferentielTitreDTO {
     private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getCodeIsin() {
+        return codeIsin;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLibCourt() {
+        return libCourt;
+    }
+
+    public String getFlagActif() {
+        return flagActif;
+    }
+
+    public String getTitrePere() {
+        return titrePere;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public String getEmetteur() {
+        return emetteur;
+    }
+
+    public String getFormeDetention() {
+        return formeDetention;
+    }
+
+    public String getSecteurEconomique() {
+        return secteurEconomique;
+    }
+
+    public Long getNombreTitreEmis() {
+        return nombreTitreEmis;
+    }
+
+    public BigDecimal getNominal() {
+        return nominal;
+    }
+
+    public String getTypeSpreadEmission() {
+        return typeSpreadEmission;
+    }
+
+    public BigDecimal getSpreadEmission() {
+        return spreadEmission;
+    }
+
+    public BigDecimal getPrixEmission() {
+        return prixEmission;
+    }
+
+    public BigDecimal getPrimeRembou() {
+        return primeRembou;
+    }
+
+    public BigDecimal getQuotite() {
+        return quotite;
+    }
+
+    public String getDivision() {
+        return division;
+    }
+
+    public String getTypeTaux() {
+        return typeTaux;
+    }
+
+    public BigDecimal getValeurTaux() {
+        return valeurTaux;
+    }
+
+    public String getMethodeCoupon() {
+        return methodeCoupon;
+    }
+
+    public String getPeriodiciteCoupon() {
+        return periodiciteCoupon;
+    }
+
+    public String getPeriodiciteRembou() {
+        return periodiciteRembou;
+    }
+
+    public String getBaseCalcul() {
+        return baseCalcul;
+    }
+
+    public String getTypePrecision() {
+        return typePrecision;
+    }
+
+    public LocalDate getDateEmission() {
+        return dateEmission;
+    }
+
+    public LocalDate getDateJouissance() {
+        return dateJouissance;
+    }
+
+    public LocalDate getDateEcheance() {
+        return dateEcheance;
+    }
+
+    public LocalDate getDateMaj() {
+        return dateMaj;
+    }
+
+    public String getGarantie() {
+        return garantie;
+    }
+
+    public String getTiersGarant() {
+        return tiersGarant;
+    }
+
+    public String getCourbeTaux() {
+        return courbeTaux;
+    }
+
+    public String getMethodeValo() {
+        return methodeValo;
+    }
+
+    public String getTypeCotation() {
+        return typeCotation;
+    }
+
+    public String getPlaceCotation() {
+        return placeCotation;
+    }
+
+    public String getMarche() {
+        return marche;
+    }
+
+    public String getGroupe1() {
+        return groupe1;
+    }
+
+    public String getGroupe2() {
+        return groupe2;
+    }
+
+    public String getGroupe3() {
+        return groupe3;
+    }
+
+    public String getDepositaire() {
+        return depositaire;
+    }
+
+    public String getDeviseCotation() {
+        return deviseCotation;
+    }
+
     private String codeIsin;
     private String description;
     private String libCourt;
