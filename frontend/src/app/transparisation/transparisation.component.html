@@ -1,0 +1,63 @@
+<div class="container mx-auto p-6">
+  <h1 class="text-3xl font-bold mb-6 text-center">Fiche Transparisation</h1>
+
+  <!-- Formulaire de saisie -->
+  <form class="mb-6 shadow-lg p-6 bg-white rounded-lg">
+    <div class="mb-4">
+      <label for="ptf" class="block text-sm font-medium text-gray-700">Saisir le PTF</label>
+      <input id="ptf" type="text" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Saisir le PTF">
+    </div>
+
+    <div class="mb-4">
+      <label for="date_image" class="block text-sm font-medium text-gray-700">Saisir la date image</label>
+      <input id="date_image" type="date" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+    </div>
+
+    <div class="mb-4">
+      <label for="date_image_fin" class="block text-sm font-medium text-gray-700">Saisir la date image fin</label>
+      <input id="date_image_fin" type="date" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+    </div>
+
+    <!-- Bouton "Chercher les informations" -->
+    <button type="button" class="w-full py-3 mb-4 rounded-lg bg-green-600 hover:bg-green-700 text-white font-semibold transition duration-200">
+      Chercher les informations
+    </button>
+
+    <!-- Bouton "Transpariser la fiche" -->
+    <button type="button" class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition duration-200">
+      Transpariser la fiche
+    </button>
+  </form>
+
+  <!-- Tableau des données -->
+  <div class="overflow-x-auto bg-white shadow rounded-lg mt-6">
+    <table class="min-w-full table-auto">
+      <thead class="bg-gray-100">
+      <tr>
+        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Date Image</th>
+        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Date Image Fin</th>
+        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Titre</th>
+        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Code ISIN</th>
+        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Description</th>
+        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Catégorie</th>
+        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Dette Publique</th>
+        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Dette Privée</th>
+        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+       <tr *ngFor="let item of transparisationData">
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.date_image }}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.date_image_fin }}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.titre }}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.code_isin }}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.description }}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.categorie }}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.dette_public }}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.dette_privee }}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.action }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -7,6 +7,8 @@ import {ImportComponentComponent} from "./import/import.component";
 import {SituationComponent} from "./situation/situation.component";
 import {TableAvantApresComponent} from "./table-avant-apres/table-avant-apres.component";
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { TransparisationFormComponent } from './transparisation/transparisation.component';
+
 
 // If you create a HomeComponent or other pages, import them similarly.
 
@@ -16,6 +18,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'fp-file', component: ImportComponentComponent },
   { path: 'situation', component: TableAvantApresComponent },
+    { path: 'transparisation', component: TransparisationFormComponent },
 
 ];
 

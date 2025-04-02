@@ -48,13 +48,13 @@ export class SidebarComponent {
 
     /* 3) "Portefeuille" section */
     {
-      label: 'Portefeuille',
-      icon: 'fa-solid fa-folder',
-      items: [
-        { label: 'Fiche portefeuille', icon: 'fa-solid fa-folder', route: '/fichePortefeuille' },
-        { label: 'Fiche portefeuille Transparisée', icon: 'fa-regular fa-folder-open', route: '/fptrans' },
-      ]
-    },
+          label: 'Portefeuille',
+          icon: 'fa-solid fa-folder',
+          items: [
+            { label: 'Fiche Portefeuille', icon: 'fa-solid fa-folder', route: '/transparisation' },
+            { label: 'Fiche portefeuille Transparisée', icon: 'fa-regular fa-folder-open', route: '/fptrans' },
+          ]
+        },
     /* 4) "Titre & Tiers" section */
     {
       label: 'Titres & Tiers',
