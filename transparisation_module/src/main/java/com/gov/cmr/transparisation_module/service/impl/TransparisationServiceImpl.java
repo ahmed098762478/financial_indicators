@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -218,4 +219,13 @@ public class TransparisationServiceImpl implements TransparisationService {
                 .action(dto.getAction())
                 .build();
     }
+
+    @Override
+    public List<TransparisationDTO> getByTargetDate(LocalDate targetDate) {
+        List<Transparisation> entities = repository.findByTargetDate(targetDate);
+        return entities.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
 }

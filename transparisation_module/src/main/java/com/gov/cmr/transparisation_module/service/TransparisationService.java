@@ -3,6 +3,7 @@ package com.gov.cmr.transparisation_module.service;
 import com.gov.cmr.transparisation_module.model.DTO.TransparisationDTO;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface TransparisationService {
@@ -12,4 +13,5 @@ public interface TransparisationService {
     TransparisationDTO update(Integer id, TransparisationDTO dto);
     void delete(Integer id);
     void importFromExcel(MultipartFile file);
+    List<TransparisationDTO> getByTargetDate(LocalDate targetDate);
 }

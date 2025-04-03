@@ -4,22 +4,18 @@
   <!-- Formulaire de saisie -->
   <form class="mb-6 shadow-lg p-6 bg-white rounded-lg">
     <div class="mb-4">
-      <label for="ptf" class="block text-sm font-medium text-gray-700">Saisir le PTF</label>
-      <input id="ptf" type="text" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Saisir le PTF">
-    </div>
-
-    <div class="mb-4">
-      <label for="date_image" class="block text-sm font-medium text-gray-700">Saisir la date image</label>
-      <input id="date_image" type="date" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
-    </div>
-
-    <div class="mb-4">
-      <label for="date_image_fin" class="block text-sm font-medium text-gray-700">Saisir la date image fin</label>
-      <input id="date_image_fin" type="date" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+      <label for="date_image" class="block text-sm font-medium text-gray-700">Date cible</label>
+      <input [(ngModel)]="dateImage"
+             name="dateImage"
+             id="date_image"
+             type="date"
+             (input)="dateImage = $any($event.target).valueAsDate"
+             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
     </div>
 
     <!-- Bouton "Chercher les informations" -->
-    <button type="button" class="w-full py-3 mb-4 rounded-lg bg-green-600 hover:bg-green-700 text-white font-semibold transition duration-200">
+    <button type="button" (click)="chercherInformations()"
+            class="w-full py-3 mb-4 rounded-lg bg-green-600 hover:bg-green-700 text-white font-semibold transition duration-200">
       Chercher les informations
     </button>
 
@@ -46,16 +42,16 @@
       </tr>
       </thead>
       <tbody>
-       <tr *ngFor="let item of transparisationData">
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.date_image }}</td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.date_image_fin }}</td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.titre }}</td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.code_isin }}</td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.description }}</td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.categorie }}</td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.dette_public }}</td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.dette_privee }}</td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ item.action }}</td>
+      <tr *ngFor="let item of transparisationData">
+        <td>{{ item.dateImage | date }}</td>
+        <td>{{ item.dateImageFin | date }}</td>
+        <td>{{ item.titre }}</td>
+        <td>{{ item.codeIsin }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.categorie }}</td>
+        <td>{{ item.dettePublic | number }}</td>
+        <td>{{ item.dettePrivee | number }}</td>
+        <td>{{ item.action | number }}</td>
       </tr>
       </tbody>
     </table>

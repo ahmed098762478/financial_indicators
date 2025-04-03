@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -15,6 +16,7 @@ import java.util.List;
 public class TransparisationController {
 
     private final TransparisationService transparisationService;
+
 
     public TransparisationController(TransparisationService transparisationService) {
         this.transparisationService = transparisationService;
@@ -66,4 +68,11 @@ public class TransparisationController {
             return new ResponseEntity<>("Failed to import Excel file: " + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/by-date")
+    public ResponseEntity<List<TransparisationDTO>> getByDate(@RequestParam LocalDate targetDate) {
+        List<TransparisationDTO> result = transparisationService.getByTargetDate(targetDate);
+        return ResponseEntity.ok(result);
+    }
+
 }
