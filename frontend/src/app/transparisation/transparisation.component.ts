@@ -16,6 +16,7 @@ export class TransparisationFormComponent {
   dateImageFin: string = '9999-12-31';
   ptf: string = 'CIV';
   private apiUrl = 'http://localhost:8080/api/transparisation/by-date';
+  successMessage: string = ''; // Pour afficher le message de succès
 
   constructor(private http: HttpClient) { }
 
@@ -42,4 +43,19 @@ export class TransparisationFormComponent {
       }
     });
   }
+
+  transpariserFiche() {
+    const transpariserUrl = `http://localhost:8080/api/transparisation/process?targetDate=${this.dateImage}`;
+    this.http.post(transpariserUrl, {}).subscribe({
+      next: (response) => {
+        this.successMessage = 'Transparisation effectuée avec succès';
+        console.log('Transparisation réussie:', response);
+      },
+      error: (err) => {
+        console.error('Erreur lors de la transparisation:', err);
+        this.successMessage = ''; // En cas d'erreur, on vide le message de succès
+      }
+    });
+  }
+
 }

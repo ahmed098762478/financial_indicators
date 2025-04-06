@@ -1,4 +1,9 @@
 <div class="container mx-auto p-6">
+  <!-- Message de succès -->
+  <div *ngIf="successMessage" class="bg-green-500 text-white p-4 rounded-md mb-4">
+    {{ successMessage }}
+  </div>
+
   <h1 class="text-3xl font-bold mb-6 text-center">Fiche Transparisation</h1>
 
   <!-- Formulaire de saisie -->
@@ -40,7 +45,8 @@
     </button>
 
     <!-- Bouton "Transpariser la fiche" -->
-    <button type="button" class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition duration-200">
+    <button type="button" (click)="transpariserFiche()"
+            class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition duration-200">
       Transpariser la fiche
     </button>
   </form>
@@ -49,7 +55,7 @@
   <div class="overflow-x-auto bg-white shadow-lg rounded-xl mt-6">
     <table class="w-full border-collapse">
       <thead class="bg-blue-600 text-white uppercase text-sm leading-normal">
-      <tr class="hover:bg-transparent"> <!-- Supprime l'effet hover -->
+      <tr class="hover:bg-transparent">
         <th class="py-4 px-6 text-left">Date Image</th>
         <th class="py-4 px-6 text-left">Date Image Fin</th>
         <th class="py-4 px-6 text-left">Titre</th>
@@ -76,5 +82,4 @@
       </tbody>
     </table>
   </div>
-
 </div>
