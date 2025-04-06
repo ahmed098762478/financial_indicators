@@ -1,12 +1,12 @@
 package com.gov.cmr.transparisation_module.service.impl;
 
 import com.gov.cmr.transparisation_module.model.DTO.SituationApresTraitementDTO;
-import com.gov.cmr.transparisation_module.model.DTO.TransparisationDTO;
 import com.gov.cmr.transparisation_module.model.entitys.SituationApresTraitement;
 import com.gov.cmr.transparisation_module.repository.SituationApresTraitementRepository;
 import com.gov.cmr.transparisation_module.service.SituationApresTraitementService;
 import com.jayway.jsonpath.spi.mapper.MappingException;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,66 +19,73 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @Slf4j
-
 public class SituationApresTraitementServiceImpl implements SituationApresTraitementService {
 
     private final SituationApresTraitementRepository repository;
+    private final EntityManager entityManager;
 
-    public SituationApresTraitementServiceImpl(SituationApresTraitementRepository repository) {
+    public SituationApresTraitementServiceImpl(SituationApresTraitementRepository repository,
+                                               EntityManager entityManager) {
         this.repository = repository;
+        this.entityManager = entityManager;
     }
 
     @Override
     public List<SituationApresTraitementDTO> calculateAndSaveSituation() {
         try {
-            log.info("Nettoyage des données...");
-            repository.clearAll();
-            repository.refresh(); // Force le rafraîchissement
+            log.info("Clearing existing data...");
+            int deleted = repository.clearAll();
+            log.info("Deleted {} rows", deleted);
 
-            log.info("Insertion depuis situation_avant...");
-            repository.insertFromSituationAvant();
-            repository.refresh();
+            entityManager.flush();
 
-            log.info("Insertion depuis trans_tempo...");
-            repository.insertFromTransTempo();
-            repository.refresh();
+            log.info("Inserting from situation_avant...");
+            int insertedFromAvant = repository.insertFromSituationAvant();
+            log.info("Inserted {} rows from situation_avant", insertedFromAvant);
 
-            return repository.findAll().stream()
+            log.info("Inserting from trans_tempo...");
+            int insertedFromTempo = repository.insertFromTransTempo();
+            log.info("Inserted {} rows from trans_tempo", insertedFromTempo);
+
+            entityManager.flush();
+
+            List<SituationApresTraitement> results = repository.findAll();
+            log.info("Final dataset contains {} items", results.size());
+
+            return results.stream()
                     .map(this::mapToDTO)
                     .collect(Collectors.toList());
 
         } catch (Exception e) {
-            log.error("Erreur de calcul", e);
-            throw new RuntimeException("Calcul échoué: " + e.getMessage());
+            log.error("Calculation error", e);
+            throw new RuntimeException("Calculation failed", e);
         }
     }
 
+
     @Override
-     @Transactional
-      public List<SituationApresTraitementDTO> getAll() {
+    public List<SituationApresTraitementDTO> getAll() {
         try {
-            // Méthode 1 : Utilisation directe du repository
+            // Nettoyage du cache de persistence
+            entityManager.flush();
+            entityManager.clear();
+
+            // Récupération des données
             List<SituationApresTraitement> entities = repository.findAll();
 
-            // Méthode alternative si problème de cache :
-            EntityManager em = null;
-            entities = em.createQuery(
-                    "SELECT s FROM situation_apres_traitement s", SituationApresTraitement.class).getResultList();
-
-            log.debug("DB returned {} entities", entities.size());
+            log.debug("Nombre d'entités récupérées: {}", entities.size());
             return entities.stream()
                     .map(this::mapToDTO)
-                    .toList();
-
+                    .collect(Collectors.toList());
         } catch (Exception e) {
-            log.error("Service error", e);
-            throw new RuntimeException("Database access error", e);
+            log.error("Erreur lors de la récupération des données", e);
+            throw new RuntimeException("Erreur d'accès à la base de données", e);
         }
     }
 
     private SituationApresTraitementDTO mapToDTO(SituationApresTraitement entity) {
         if (entity == null) {
-            log.warn("Attempt to map null SituationApresTraitement entity");
+            log.warn("Tentative de mapper une entité nulle");
             return null;
         }
 
@@ -95,8 +102,8 @@ public class SituationApresTraitementServiceImpl implements SituationApresTraite
                             entity.getDateCreation() : LocalDate.now())
                     .build();
         } catch (Exception e) {
-            log.error("Mapping error for entity: {}", entity, e);
-            throw new MappingException("Failed to map SituationApresTraitement to DTO");
+            log.error("Erreur de mapping pour l'entité: {}", entity, e);
+            throw new MappingException("Échec du mapping SituationApresTraitement vers DTO");
         }
     }
 }

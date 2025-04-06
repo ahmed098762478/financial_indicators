@@ -4,20 +4,16 @@ import com.gov.cmr.transparisation_module.model.entitys.SituationApresTraitement
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.logging.Logger;
 
 @Repository
 public interface SituationApresTraitementRepository extends JpaRepository<SituationApresTraitement, Integer> {
 
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query(value = "DELETE FROM situation_apres_traitement", nativeQuery = true)
-    void clearAll();
+    int clearAll();
 
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query(value = """
@@ -32,7 +28,7 @@ public interface SituationApresTraitementRepository extends JpaRepository<Situat
         WHERE sa.is_situation_avant = TRUE
         GROUP BY sa.categorie, sa.valeur_comptable, sa.valeur_marche
         """, nativeQuery = true)
-    void insertFromSituationAvant();
+    int insertFromSituationAvant();
 
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query(value = """
@@ -57,10 +53,10 @@ public interface SituationApresTraitementRepository extends JpaRepository<Situat
     CROSS JOIN (VALUES ('__PP'), ('_PB'), ('_act')) AS suffixes(suffix)
     GROUP BY t.categorie, suffix
     """, nativeQuery = true)
-    void insertFromTransTempo();
+    int insertFromTransTempo();
 
-    // Ajoutez cette méthode pour forcer le rafraîchissement
-    @Query(value = "SELECT 1", nativeQuery = true)
-    void refresh();
-}
+    @Query("SELECT s FROM SituationApresTraitement s")
+    List<SituationApresTraitement> findAllCustom();
+
+ }
 

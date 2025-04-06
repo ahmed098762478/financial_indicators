@@ -4,23 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e16dfe08-d70e-4200-b9a9-3122c674828e" name="Changes" comment="&quot;Logique de transparisation&quot;">
-      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/controller/SituationApresTraitementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/DTO/SituationApresTraitementDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/model/entitys/SituationApresTraitement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/repository/SituationApresTraitementRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/SituationApresTraitementService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/SituationApresTraitementServiceImpl.java" afterDir="false" />
+    <list default="true" id="e16dfe08-d70e-4200-b9a9-3122c674828e" name="Changes" comment="&quot;situation apres traitement&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/transparisation/transparisation.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/transparisation/transparisation.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/transparisation/transparisation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/transparisation/transparisation.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/transparisation/transparisation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/transparisation/transparisation.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/transparisation/transparisation.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/controller/TransparisationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/controller/TransparisationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/repository/TransparisationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/repository/TransparisationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/TransparisationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/TransparisationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/TransparisationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/TransparisationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/controller/SituationApresTraitementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/controller/SituationApresTraitementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/repository/SituationApresTraitementRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/repository/SituationApresTraitementRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/SituationApresTraitementServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/transparisation_module/src/main/java/com/gov/cmr/transparisation_module/service/impl/SituationApresTraitementServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743675331596</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&quot;situation apres traitement&quot;">
+      <option name="closed" value="true" />
+      <created>1743936747332</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743936747332</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,7 +198,8 @@
     <MESSAGE value="&quot;&quot;" />
     <MESSAGE value="&quot;interface de transparisation&quot;" />
     <MESSAGE value="&quot;Logique de transparisation&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Logique de transparisation&quot;" />
+    <MESSAGE value="&quot;situation apres traitement&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;situation apres traitement&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

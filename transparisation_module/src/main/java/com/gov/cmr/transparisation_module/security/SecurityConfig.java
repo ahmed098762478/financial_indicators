@@ -70,6 +70,8 @@ public class SecurityConfig {
                         // **Add** a rule for /api/fiche-portefeuille/upload
                         .requestMatchers(HttpMethod.POST, "/api/fiche-portefeuille/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/fiche-portefeuille/**").permitAll()
+                        .requestMatchers("/api/situation-apres/**").permitAll()
+
 
                         // Restrict everything else
                         .anyRequest().authenticated()
@@ -103,4 +105,6 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
 }
