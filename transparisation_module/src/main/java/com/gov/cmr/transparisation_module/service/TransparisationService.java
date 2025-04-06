@@ -13,5 +13,5 @@ public interface TransparisationService {
     TransparisationDTO update(Integer id, TransparisationDTO dto);
     void delete(Integer id);
     void importFromExcel(MultipartFile file);
-    List<TransparisationDTO> getByTargetDate(LocalDate targetDate);
+    List<TransparisationDTO> getTransparisationByDate(LocalDate targetDate); // Changé de getByTargetDate à getTransparisationByDate
 }

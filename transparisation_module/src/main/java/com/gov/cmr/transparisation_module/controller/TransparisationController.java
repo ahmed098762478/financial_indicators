@@ -1,14 +1,19 @@
 package com.gov.cmr.transparisation_module.controller;
 
+import com.gov.cmr.transparisation_module.model.DTO.SituationApresTraitementDTO;
 import com.gov.cmr.transparisation_module.model.DTO.TransparisationDTO;
+import com.gov.cmr.transparisation_module.service.SituationApresTraitementService;
 import com.gov.cmr.transparisation_module.service.TransparisationService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/transparisation")
@@ -16,10 +21,14 @@ import java.util.List;
 public class TransparisationController {
 
     private final TransparisationService transparisationService;
+    private final SituationApresTraitementService situationService;
 
 
-    public TransparisationController(TransparisationService transparisationService) {
+
+    public TransparisationController(TransparisationService transparisationService,
+                                     SituationApresTraitementService situationService) {
         this.transparisationService = transparisationService;
+        this.situationService = situationService;
     }
 
     @GetMapping
@@ -70,9 +79,36 @@ public class TransparisationController {
     }
 
     @GetMapping("/by-date")
-    public ResponseEntity<List<TransparisationDTO>> getByDate(@RequestParam LocalDate targetDate) {
-        List<TransparisationDTO> result = transparisationService.getByTargetDate(targetDate);
+    public ResponseEntity<List<TransparisationDTO>> getTransparisationByDate(
+            @RequestParam("targetDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate targetDate,
+            @RequestParam(value = "dateFin", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFin,
+            @RequestParam(value = "ptf", required = false) String ptf) {
+
+        List<TransparisationDTO> result = transparisationService.getTransparisationByDate(targetDate);
         return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/process")
+    public ResponseEntity<?> processTransparisation(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate targetDate) {
+
+        try {
+            // 1. Créer trans_tempo et récupérer les données
+            List<TransparisationDTO> transparisations = transparisationService.getTransparisationByDate(targetDate);
+
+            // 2. Calculer et sauvegarder la situation après traitement
+            List<SituationApresTraitementDTO> situations = situationService.calculateAndSaveSituation();
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("transparisations", transparisations);
+            response.put("situations", situations);
+
+            return ResponseEntity.ok(response);
+
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError()
+                    .body("Erreur lors du traitement: " + e.getMessage());
+        }
     }
 
 }

@@ -4,12 +4,32 @@
   <!-- Formulaire de saisie -->
   <form class="mb-6 shadow-lg p-6 bg-white rounded-lg">
     <div class="mb-4">
-      <label for="date_image" class="block text-sm font-medium text-gray-700">Date cible</label>
+      <label class="block text-sm font-medium text-gray-700">Saisir le PTF</label>
+      <input [(ngModel)]="ptf"
+             name="ptf"
+             type="text"
+             value="CIV"
+             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 cursor-not-allowed"
+             readonly>
+    </div>
+
+    <!-- Date Image -->
+    <div class="mb-4">
+      <label for="date_image" class="block text-sm font-medium text-gray-700">Date image</label>
       <input [(ngModel)]="dateImage"
              name="dateImage"
              id="date_image"
              type="date"
-             (input)="dateImage = $any($event.target).valueAsDate"
+             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+    </div>
+
+    <!-- Date Image Fin -->
+    <div class="mb-4">
+      <label for="date_image_fin" class="block text-sm font-medium text-gray-700">Date image fin</label>
+      <input [(ngModel)]="dateImageFin"
+             name="dateImageFin"
+             id="date_image_fin"
+             type="date"
              class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
     </div>
 
@@ -25,35 +45,36 @@
     </button>
   </form>
 
-  <!-- Tableau des données -->
-  <div class="overflow-x-auto bg-white shadow rounded-lg mt-6">
-    <table class="min-w-full table-auto">
-      <thead class="bg-gray-100">
-      <tr>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Date Image</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Date Image Fin</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Titre</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Code ISIN</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Description</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Catégorie</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Dette Publique</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Dette Privée</th>
-        <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Action</th>
+  <!-- Tableau des données amélioré -->
+  <div class="overflow-x-auto bg-white shadow-lg rounded-xl mt-6">
+    <table class="w-full border-collapse">
+      <thead class="bg-blue-600 text-white uppercase text-sm leading-normal">
+      <tr class="hover:bg-transparent"> <!-- Supprime l'effet hover -->
+        <th class="py-4 px-6 text-left">Date Image</th>
+        <th class="py-4 px-6 text-left">Date Image Fin</th>
+        <th class="py-4 px-6 text-left">Titre</th>
+        <th class="py-4 px-6 text-left">Code ISIN</th>
+        <th class="py-4 px-6 text-left">Description</th>
+        <th class="py-4 px-6 text-left">Catégorie</th>
+        <th class="py-4 px-6 text-left">Dette Publique</th>
+        <th class="py-4 px-6 text-left">Dette Privée</th>
+        <th class="py-4 px-6 text-left">Action</th>
       </tr>
       </thead>
-      <tbody>
-      <tr *ngFor="let item of transparisationData">
-        <td>{{ item.dateImage | date }}</td>
-        <td>{{ item.dateImageFin | date }}</td>
-        <td>{{ item.titre }}</td>
-        <td>{{ item.codeIsin }}</td>
-        <td>{{ item.description }}</td>
-        <td>{{ item.categorie }}</td>
-        <td>{{ item.dettePublic | number }}</td>
-        <td>{{ item.dettePrivee | number }}</td>
-        <td>{{ item.action | number }}</td>
+      <tbody class="text-gray-700 text-sm font-medium">
+      <tr *ngFor="let item of transparisationData" class="border-b border-gray-300 hover:bg-gray-100 transition duration-200">
+        <td class="py-4 px-6">{{ item.dateImage | date }}</td>
+        <td class="py-4 px-6">{{ item.dateImageFin | date }}</td>
+        <td class="py-4 px-6">{{ item.titre }}</td>
+        <td class="py-4 px-6">{{ item.codeIsin }}</td>
+        <td class="py-4 px-6">{{ item.description }}</td>
+        <td class="py-4 px-6">{{ item.categorie }}</td>
+        <td class="py-4 px-6">{{ item.dettePublic | number }}</td>
+        <td class="py-4 px-6">{{ item.dettePrivee | number }}</td>
+        <td class="py-4 px-6">{{ item.action }}</td>
       </tr>
       </tbody>
     </table>
   </div>
+
 </div>

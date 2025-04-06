@@ -31,6 +31,35 @@ public class TransparisationServiceImpl implements TransparisationService {
     }
 
     @Override
+    public List<TransparisationDTO> getTransparisationByDate(LocalDate targetDate) {
+        // 1. Créer la table temporaire
+        repository.createTransTempo(targetDate);
+
+        // 2. Récupérer les données filtrées
+        List<Transparisation> transparisations = repository.findByTargetDate(targetDate);
+
+        return transparisations.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+
+    private TransparisationDTO convertToDto(Transparisation transparisation) {
+        return TransparisationDTO.builder()
+                .id(transparisation.getId())
+                .titre(transparisation.getTitre())
+                .dateImage(transparisation.getDateImage())
+                .dateImageFin(transparisation.getDateImageFin())
+                .codeIsin(transparisation.getCodeIsin())
+                .description(transparisation.getDescription())
+                .categorie(transparisation.getCategorie())
+                .dettePublic(transparisation.getDettePublic())
+                .dettePrivee(transparisation.getDettePrivee())
+                .action(transparisation.getAction())
+                .build();
+    }
+
+    @Override
     public List<TransparisationDTO> getAll() {
         List<Transparisation> entities = repository.findAll();
         List<TransparisationDTO> dtos = new ArrayList<>();
@@ -220,12 +249,6 @@ public class TransparisationServiceImpl implements TransparisationService {
                 .build();
     }
 
-    @Override
-    public List<TransparisationDTO> getByTargetDate(LocalDate targetDate) {
-        List<Transparisation> entities = repository.findByTargetDate(targetDate);
-        return entities.stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
-    }
+
 
 }
