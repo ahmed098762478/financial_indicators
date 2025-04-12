@@ -42,7 +42,7 @@ export class LoginComponent {
       next: (res) => {
         // Store token and navigate
         this.authService.storeToken(res.token);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/fp-file']);
       },
       error: (err) => {
         console.error(err);

@@ -8,21 +8,26 @@ import {SituationComponent} from "./situation/situation.component";
 import {TableAvantApresComponent} from "./table-avant-apres/table-avant-apres.component";
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { TransparisationFormComponent } from './transparisation/transparisation.component';
+import {LayoutComponent} from './layout/layout.component'
 import { FormsModule } from '@angular/forms'; // Ajouté
 import { CommonModule } from '@angular/common'; // Ajouté
 
 
 
 // If you create a HomeComponent or other pages, import them similarly.
-
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'fp-file', component: ImportComponentComponent },
-  { path: 'situation', component: TableAvantApresComponent },
-    { path: 'transparisation', component: TransparisationFormComponent },
-
+  {
+    path: '',
+    component: LayoutComponent, // Ce layout inclut la sidebar
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'fp-file', component: ImportComponentComponent },
+      { path: 'situation', component: TableAvantApresComponent },
+      { path: 'transparisation', component: TransparisationFormComponent },
+    ]
+  }
 ];
 
 export const appConfig: ApplicationConfig = {

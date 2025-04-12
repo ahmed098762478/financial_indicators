@@ -1,49 +1,78 @@
-<div class="container flex h-screen overflow-hidden m-0 p-0">
-  <!-- Right Side -->
-  <div class="right-side w-full h-full flex items-center justify-center bg-white relative">
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
+  <!-- Header with CMR logo -->
+  <div class="w-full flex justify-end mb-8">
+    <img src="/assets/cmr.png" alt="Maroc" class="absolute top-4 right-4 w-104 h-auto"> <!-- Image agrandie -->
+  </div>
 
-    <!-- Image en haut à droite -->
-    <img src="/assets/maroc.png" alt="Maroc" class="absolute top-4 right-4 w-64 h-auto"> <!-- Image agrandie -->
-
-    <div class="login-box w-full max-w-lg text-center p-6">
-      <!-- Logo d'entreprise agrandi -->
-      <img src="/assets/image.jpg" alt="Logo Entreprise" class="logo mx-auto mb-6 w-84 h-auto"> <!-- Image agrandie -->
-      <h2 class="text-2xl font-bold mb-6 text-gray-800">Connexion</h2>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-5">
-        <!-- Email Field -->
-        <div>
-          <input
-            formControlName="email"
-            type="email"
-            placeholder="Email"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-150"
-          />
-          <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
-            Email is required and must be valid
-          </div>
-        </div>
-
-        <!-- Password Field -->
-        <div>
-          <input
-            formControlName="password"
-            type="password"
-            placeholder="Mot de passe"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-150"
-          />
-          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
-            Password is required
-          </div>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition duration-200">
-          Se connecter
-        </button>
-      </form>
-
-      <!-- Error Message -->
-      <p *ngIf="errorMessage" id="error-message" class="text-red-500 mt-4">{{ errorMessage }}</p>
+  <!-- Main login card -->
+  <div class="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden p-8">
+    <!-- Company logo -->
+    <div class="flex justify-center mb-6">
+      <img src="/assets/cmr1.png" alt="Logo Entreprise" class="logo mx-auto mb-6 w-84 h-32"> <!-- Image agrandie -->
     </div>
+
+    <!-- Title -->
+    <h1 class="text-2xl font-bold text-center text-gray-800 mb-1">Connexion</h1>
+    <p class="text-center text-gray-500 mb-8">Caisse marocaine des retraites</p>
+
+    <!-- Login form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      <!-- Email field -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input
+          id="email"
+          formControlName="email"
+          type="email"
+          placeholder="votre@email.com"
+          [ngClass]="{
+            'border-red-500': loginForm.get('email')?.invalid && loginForm.get('email')?.touched,
+            'border-gray-300': !(loginForm.get('email')?.invalid && loginForm.get('email')?.touched)
+          }"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+        />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500 text-xs mt-1">
+          Veuillez entrer un email valide
+        </div>
+      </div>
+
+      <!-- Password field -->
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
+        <input
+          id="password"
+          formControlName="password"
+          type="password"
+          placeholder="••••••••"
+          [ngClass]="{
+            'border-red-500': loginForm.get('password')?.invalid && loginForm.get('password')?.touched,
+            'border-gray-300': !(loginForm.get('password')?.invalid && loginForm.get('password')?.touched)
+          }"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+        />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500 text-xs mt-1">
+          Le mot de passe est requis
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium rounded-lg transition duration-200"
+      >
+        Se connecter
+      </button>
+
+      <!-- Error message -->
+      <div *ngIf="errorMessage" class="text-center text-red-500 text-sm py-2 px-3 bg-red-50 rounded-lg">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="mt-8 text-center text-gray-500 text-sm">
+    © 2023 Cause Marocaine des Retraites. Tous droits réservés.
   </div>
 </div>
